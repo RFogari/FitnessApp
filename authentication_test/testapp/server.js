@@ -25,7 +25,10 @@ mongoose.connect(
 const passport = require('./config/passport');
 const users = require('./app/models/users');
 
+app.use(passport);
+app.use(users);
+
 //API Server start
 app.listen(PORT, function() {
-    console.log('API Server listening on port ${PORT}.')
+    console.log(' ==> API Server listening on port ${PORT}.')
 });
