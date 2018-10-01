@@ -45,5 +45,17 @@ export default class Auth {
     history.replace('/home');
   }
 
+//logout and remove user details from localStorage
+
+logout = () => {
+  //remove access token and id token from local localStorage
+
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('id_token');
+  localStorage.removeItem('expires_at');
+
+  //navigate to home route
+  history.replace('/home');
+}
 
 }
