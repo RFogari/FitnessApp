@@ -58,4 +58,13 @@ logout = () => {
   history.replace('/home');
 }
 
+//checks if user is authenticated
+
+isAuthenticated = () => {
+  //validate if current time is past access token's expiration
+
+  let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+  return new Date().getTime() < expiresAt;
+}
+
 }
