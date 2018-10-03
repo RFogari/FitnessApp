@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
+import loading from './loading.svg';
 
-const Callback = () => (
-  <div className="container">
+class Callback extends Component {
+  
+  render() {
 
-      <h4> Loading...</h4>
-  </div>
+    //const style = //...
 
-);
+    return (
+      
+      <div style={style}>
+
+      <img srce={loading} alt="loading"/>
+      
+      </div>
+    );
+  }
+
+}
+
 
 export default Callback;
