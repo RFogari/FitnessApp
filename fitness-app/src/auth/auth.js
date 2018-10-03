@@ -3,7 +3,6 @@ import history from '../history/history'
 
 
 export default class Auth {
-  //Auth0 credentials
 
   auth0 = new auth0.webAuth({
     domain: 'rcb2018.auth0.com',
@@ -13,20 +12,19 @@ export default class Auth {
     scope: 'openid'
   });
 
+ 
+  
+
+  constructor() {
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.isAuthenticated = this.isAuthenticated.bind(this);
+  }
+
   login = () => {
     this.auth0.authorize();
-  }
-}
-
-
-export default class Auth {
-
-constructor() {
-  this.login = this.login.bind(this);
-  this.logout = this.logout.bind(this);
-  this.handleAuthentication = this.handleAuthentication.bind(this);
-  this.isAuthenticated = this.isAuthenticated.bind(this);
-}
+  };
 
 handleAuthentication() {
   this.auth0.parseHash((err, authResult) => {
@@ -37,8 +35,8 @@ handleAuthentication() {
       history.replace('/home');
       console.log(err);
     }
-  });
-}
+  })
+};
 
 
 setSession(authResult) {
@@ -52,7 +50,7 @@ setSession(authResult) {
 
   //navigates to home route
   history.replace('/home');
-}
+};
 
 
 logout() {
@@ -65,13 +63,13 @@ logout() {
   //navigate to home route
   
   history.replace('/home');
-}
+};
 
 isAuthenticated() {
   //validates if current time is past the Access Token's expiration time.
 
   let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
   return new Date().getTime() < expiresAt;
-}
+};
 
 }
