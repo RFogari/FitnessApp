@@ -1,6 +1,6 @@
 import auth0 from 'auth0-js';
+import history from '../history/history'
 
-import history from './history/history'
 
 export default class Auth {
   //Auth0 credentials
@@ -8,8 +8,7 @@ export default class Auth {
   auth0 = new auth0.webAuth({
     domain: 'rcb2018.auth0.com',
     clientID: 'VMmnjHQabl8pif5fWEaXmvk4bPLaOB0x',
-    redirectUri: process.env.NODE_ENV === 'development' ? 'http://localhost:3000/callback' :
-    audience: 'https://rcb2018.auth0.com/userinfo',
+    redirectUri: 'http://localhost:3000/callback',
     responseType: 'token id_token',
     scope: 'openid'
   });
@@ -17,51 +16,59 @@ export default class Auth {
   login = () => {
     this.auth0.authorize();
   }
+}
 
-  //parse result after authentication from URL hash
 
-  handleAuthentication = () => {
-    this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
-        history.replace('/home');
-      } else if (err) {
-        history.replace('/home');
-        console.log(err);
-      }
-    });
-  }
+export default class Auth {
 
-//set user details in localStorage
+constructor() {
+  this.login = this.login.bind(this);
+  this.logout = this.logout.bind(this);
+  this.handleAuthentication = this.handleAuthentication.bind(this);
+  this.isAuthenticated = this.isAuthenticated.bind(this);
+}
 
-  setSession = (authResult) => {
-    //Set expiration time for  access token
-    let expiresAt = JSON.stringify((authResult.expiresIn = 1000) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
+handleAuthentication() {
+  this.auth0.parseHash((err, authResult) => {
+    if(authResult && authResult.accessToken && authResult.idToken) {
+      this.setSession(authResult);
+      history.replace('/home');
+    } else if (err) {
+      history.replace('/home');
+      console.log(err);
+    }
+  });
+}
 
-    //navigate to home route
-    history.replace('/home');
-  }
 
-//logout and remove user details from localStorage
+setSession(authResult) {
+  //Sets expiration time for Access Token
 
-logout = () => {
-  //remove access token and id token from local localStorage
+  let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+
+  localStorage.setItem('access_token', authResult.accessToken);
+  localStorage.setItem('id_token', authResult.idToken);
+  localStorage.setItem('expires_at', expiresAt);
+
+  //navigates to home route
+  history.replace('/home');
+}
+
+
+logout() {
+  //Remove Access Token and ID Token from local storage.
 
   localStorage.removeItem('access_token');
   localStorage.removeItem('id_token');
   localStorage.removeItem('expires_at');
 
   //navigate to home route
+  
   history.replace('/home');
 }
 
-//checks if user is authenticated
-
-isAuthenticated = () => {
-  //validate if current time is past access token's expiration
+isAuthenticated() {
+  //validates if current time is past the Access Token's expiration time.
 
   let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
   return new Date().getTime() < expiresAt;
