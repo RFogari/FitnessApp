@@ -13,4 +13,4 @@ const fitnessSchema = new Schema({
 
 const FitnessData = mongoose.model("FitnessData", fitnessSchema);
 
-model.exports = FitnessData;
+module.exports = FitnessData;
