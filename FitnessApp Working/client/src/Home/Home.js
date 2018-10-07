@@ -11,11 +11,18 @@ class Home extends Component {
       <div className="container">
         {
           isAuthenticated() && (
+              
+            <div>
+              
               <h4>
                 You are logged in! You can now view your{' '}
                 <Link to="profile">profile area</Link>
                 .
               </h4>
+
+              <h1>Hello World</h1>
+              <h1> to add new records click the following link <Link to="formData">Form</Link></h1>
+              </div>
             )
         }
         {

@@ -10,29 +10,25 @@ var FitnessSchema = new Schema({
         type: String,
         required: true,
     },
-
-    username: {
-        type: String,
-    },
-
+    
     activity: {
         type: String,
         required: true,
     },
 
-    activityMeasure: {
+    time: {
         type: String,
         required: true,
     },
 
-    day: {
+    date: {
         type: String,
         required: true,
     },
 
     notes: {
         type: String,
-        required: true,
+        required: false,
     }
 
 
