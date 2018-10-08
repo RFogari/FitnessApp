@@ -1,1 +1,1 @@
-export { default } from "./Fitnesform.js"
+export { default } from "./Fitnessform.js"
