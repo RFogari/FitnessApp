@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import dataForm from "../Pages/FitnessForm/Fitnesform";
 
 class Home extends Component {
   login() {
@@ -21,7 +22,7 @@ class Home extends Component {
               </h4>
 
               <h1>Hello World</h1>
-              <h1> to add new records click the following link <Link to="formData">Form</Link></h1>
+              <h1> to add new records click the following link <Link to="dataForm">Form</Link></h1>
               </div>
             )
         }

@@ -52,14 +52,6 @@ class App extends Component {
                     onClick={this.goTo.bind(this, 'profile')}
                   >
                     Profile
-                  </Button>,
-
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.goTo.bind(this,"Dataform")}>
-                  
-                    Data
                   </Button>
                   
                 )

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import API from "../../Utils/API";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Jumbotron from "../../Components/Jumbotron";
+import Container from "../../Components/Container";
 
 
 class Dataform extends Component {
@@ -13,18 +15,14 @@ class Dataform extends Component {
         notes: ''
     };
 
+   
+
     componentDidMount() {
-        this.getAccessToken();
+        const idtoken = localStorage.getItem('id_token')
+        console.log(idtoken);
     }
 
-    getAccessToken() {
-    const accessToken = localStorage.getItem('id_token');
-     return accessToken;
-
-     console.log(accessToken);
-     alert(accessToken);
-    }
-
+   
 
 
     handleInputChange = event => {
@@ -58,13 +56,13 @@ class Dataform extends Component {
             <Container fluid>
                 <row>
                     <Jumbotron>
-                        <H1>Enter New Fitness Records</H1>
+                        <h1>Enter New Fitness Records</h1>
                     </Jumbotron>
                 </row>
                 <form>
-                    <Label>
+                    <label>
                         Select Your Activity:
-                        <Select
+                        <select
                             name="activity"
                             value={this.state.activity}
                             onChange={this.handleInputChange}>
@@ -75,12 +73,12 @@ class Dataform extends Component {
                             <option value="Running">Running</option>
                             <option value="Cycling">Cycling</option>
                             <option value="Rowing">Rowing</option>
-                        </Select>
-                    </Label>
+                        </select>
+                    </label>
                     
-                    <Label>
+                    <label>
                         Time Spent Active? (reqired
-                        <Select
+                        <select
                             name="time"
                             value={this.state.time}
                             onChange={this.handleInputChange}>
@@ -91,9 +89,9 @@ class Dataform extends Component {
                         <option value="60">1 Hour</option>
                         <option value="90">90 Minutes</option>
                         <option value="120">2 Hours</option>    
-                        </Select> 
-                    </Label>
-                    <Label>
+                        </select> 
+                    </label>
+                    <label>
                         Select Date                       
                         <DatePicker
                             name="date"
@@ -101,27 +99,27 @@ class Dataform extends Component {
                             onChange={this.handleInputChange}
                             withPortal
                         />
-                    </Label> 
+                    </label> 
 
-                    <Label>
+                    <label>
                         Notes:
 
-                        <TextArea
+                        <textarea
                             name="notes"
                             value={this.state.notes}
                             onChange={this.handleInputChange}
                          />
                         
-                    </Label>           
+                    </label>           
 
-                    <FormBtn
+                    <button
                         disabled={!(
                             this.state.activity
                             && this.state.time
                             && this.state.date
                         )}
                         onclick={this.handleFormSubmit}
-                        >Submit New Data</FormBtn>
+                        >Submit New Data</button>
 
                 </form>            
             </Container>
