@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Jumbotron from "../../Components/Jumbotron";
 import Container from "../../Components/Container";
+import moment from 'moment';
 
 
 class Dataform extends Component {
@@ -22,6 +23,21 @@ class Dataform extends Component {
         console.log(idtoken);
     }
 
+
+    constructor (props) {
+        super(props)
+        this.state = {
+            startDate: moment()
+        };        
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+
+    handleChange(date) {
+        this.setState({
+            startDate:date
+        });
+    }
    
 
 
@@ -45,7 +61,7 @@ class Dataform extends Component {
                     notes: this.state.notes
                 })
 
-                .then(res => this.loadData())
+                //.then(res => this.loadData())
                 .then(err => console.log(err));
             }
     };
@@ -53,6 +69,7 @@ class Dataform extends Component {
 
     render() {
         return(
+            
             <Container fluid>
                 <row>
                     <Jumbotron>
@@ -60,6 +77,7 @@ class Dataform extends Component {
                     </Jumbotron>
                 </row>
                 <form>
+                    <row>
                     <label>
                         Select Your Activity:
                         <select
@@ -75,9 +93,10 @@ class Dataform extends Component {
                             <option value="Rowing">Rowing</option>
                         </select>
                     </label>
-                    
+                    </row>
+                    <row>
                     <label>
-                        Time Spent Active? (reqired
+                        Time Spent Active? (reqired)
                         <select
                             name="time"
                             value={this.state.time}
@@ -91,16 +110,20 @@ class Dataform extends Component {
                         <option value="120">2 Hours</option>    
                         </select> 
                     </label>
+                    </row>
+                    <row>
                     <label>
                         Select Date                       
-                        <DatePicker
+                        <DatePicker 
                             name="date"
-                            selected={this.state.date}
-                            onChange={this.handleInputChange}
-                            withPortal
+                            selected={this.state.startDate}
+                            onChange={this.handleChange}
+                            
                         />
+                        
                     </label> 
-
+                    </row>
+                    <row>
                     <label>
                         Notes:
 
@@ -111,16 +134,17 @@ class Dataform extends Component {
                          />
                         
                     </label>           
-
+                    </row>
+                    <row>
                     <button
                         disabled={!(
                             this.state.activity
                             && this.state.time
                             && this.state.date
                         )}
-                        onclick={this.handleFormSubmit}
+                        onClick={this.handleFormSubmit}
                         >Submit New Data</button>
-
+                    </row>
                 </form>            
             </Container>
         )

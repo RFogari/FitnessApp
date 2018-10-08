@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
+
 class Home extends Component {
   login() {
     this.props.auth.login();
@@ -21,8 +22,8 @@ class Home extends Component {
                 .
               </h4>
 
-              <h1>Hello World</h1>
-              <h1> to add new records click the following link <Link to="dataForm">Form</Link></h1>
+              
+              <h1> to add new records click the following link <Link to="FitnessForm">Form</Link></h1>
               </div>
             )
         }

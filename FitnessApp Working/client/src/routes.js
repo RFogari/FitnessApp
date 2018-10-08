@@ -6,7 +6,8 @@ import Profile from './Profile/Profile';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
-import dataForm from './Pages/FitnessForm/Fitnesform';
+import Dataform from './Pages/FitnessForm/Fitnessform'
+
 
 const auth = new Auth();
 
@@ -22,6 +23,7 @@ export const makeMainRoutes = () => {
         <div>
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+          <Route path="/FitnessForm" render={(props) => <Dataform auth={auth} {...props} />} />
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/home"/>
@@ -34,7 +36,7 @@ export const makeMainRoutes = () => {
             return <Callback {...props} /> 
           }}/>
 
-          <Route path="/dataForm" render={(props) => <App dataForm={dataForm} {...props} />} />        
+          
         </div>
       </Router>
   );
