@@ -1,10 +1,10 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 //reference for Schema constructor
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 //using Schema constructor to creater new FitnessSchema object
-var FitnessSchema = new Schema({
+const FitnessSchema = new Schema({
 
     tokenID: {
         type: String,
@@ -35,7 +35,7 @@ var FitnessSchema = new Schema({
 });
 
 //Create model from Schema using mongoose's model method.
-var Data = mongoose.model("Data", FitnessSchema);
+const Data = mongoose.model("Data", FitnessSchema);
 
 //export Fitness Data model
 module.exports = Data;

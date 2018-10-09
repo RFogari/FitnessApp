@@ -5,16 +5,18 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Jumbotron from "../../Components/Jumbotron";
 import Container from "../../Components/Container";
-import moment from 'moment';
+//import moment from 'moment';
 
 
 class Dataform extends Component {
-    state = {
-        activity: '',
-        time: '',
-        date: '',
-        notes: ''
-    };
+
+    constructor(props) {
+        super(props);
+        this.state = {value: ''};
+        this.handleInputChange = this.handleInputChange.bind(this);
+        
+    }
+    
 
    
 
@@ -24,14 +26,12 @@ class Dataform extends Component {
     }
 
 
-    constructor (props) {
-        super(props)
-        this.state = {
-            startDate: moment()
-        };        
-        this.handleChange = this.handleChange.bind(this);
-    }
 
+handleSelect(date) {
+    this.setState({
+        startDate: date
+    });
+}
 
     handleChange(date) {
         this.setState({
@@ -46,20 +46,25 @@ class Dataform extends Component {
         this.setState({
             [name]: value
         });
+        this.handleChange = this.handleInputChange.bind(this);
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if(this.state.activity && 
-            this.state.time &&
-            this.state.date) {
-                API.saveData({
-                    tokenID: this.state.tokenID,
-                    activity: this.state.activity,
-                    time: this.state.times,
-                    date: this.state.date,
-                    notes: this.state.notes
-                })
+        if (this.state.activity 
+                && this.state.time 
+                &&this.state.date) {
+                    API.saveData({
+                        tokenID: this.state.tokenID,
+                        activity: this.state.activity,
+                        time: this.state.time,
+                        date: this.state.date,
+                        notes: this.state.notes,
+
+                        
+                    })
+                        .then(alert("form submitted"))
+                      
 
                 //.then(res => this.loadData())
                 .then(err => console.log(err));
@@ -76,14 +81,15 @@ class Dataform extends Component {
                         <h1>Enter New Fitness Records</h1>
                     </Jumbotron>
                 </row>
-                <form>
+                <form onSubmit={this.handleFormSubmit}>
                     <row>
                     <label>
                         Select Your Activity:
                         <select
-                            name="activity"
                             value={this.state.activity}
-                            onChange={this.handleInputChange}>
+                            onChange={this.handleInputChange}
+                            //name="activity"
+                            >
                             <option value="Walking">Walking</option>
                             <option value="Lifting">Lifting</option>
                             <option value="Swimming">Swimming</option>
@@ -91,6 +97,7 @@ class Dataform extends Component {
                             <option value="Running">Running</option>
                             <option value="Cycling">Cycling</option>
                             <option value="Rowing">Rowing</option>
+                            
                         </select>
                     </label>
                     </row>
@@ -98,7 +105,7 @@ class Dataform extends Component {
                     <label>
                         Time Spent Active? (reqired)
                         <select
-                            name="time"
+                            //name="time"
                             value={this.state.time}
                             onChange={this.handleInputChange}>
 
@@ -115,9 +122,10 @@ class Dataform extends Component {
                     <label>
                         Select Date                       
                         <DatePicker 
-                            name="date"
-                            selected={this.state.startDate}
+                            //name="date"
+                            onSelect={this.state.handleSelect}
                             onChange={this.handleChange}
+                            withPortal
                             
                         />
                         
@@ -128,7 +136,7 @@ class Dataform extends Component {
                         Notes:
 
                         <textarea
-                            name="notes"
+                            //name="notes"
                             value={this.state.notes}
                             onChange={this.handleInputChange}
                          />

@@ -7,10 +7,9 @@ router.route("/")
     .post(fitnessController.create)
 
 //match based on user token ID
-router
-    .route("/:id")
+router.route("/:id")
     .get(fitnessController.findByID)
-    .put(fitnessController.update);
+    //.put(fitnessController.update);
     
     
 module.exports = router;

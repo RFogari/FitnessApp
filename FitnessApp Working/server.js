@@ -1,9 +1,5 @@
-
-
-
 const express = require("express");
 const bodyParser = require("body-parser");
-const logger = require("morgan");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
