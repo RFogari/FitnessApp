@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import API from "../../Utils/API";
 //import { Link } from "react-router-dom";
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+//import DatePicker from 'react-datepicker';
+import DatePicker from 'react-date-picker';
+//import 'react-datepicker/dist/react-datepicker.css';
 import Jumbotron from "../../Components/Jumbotron";
 import Container from "../../Components/Container";
 //import moment from 'moment';
@@ -10,14 +11,13 @@ import Container from "../../Components/Container";
 
 class Dataform extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: ''};
-        this.handleInputChange = this.handleInputChange.bind(this);
-        
-    }
-    
+    state = {
+        activity: "",
+        time: "",
+        date: new Date(),
+        notes: "",
 
+    }
    
 
     componentDidMount() {
@@ -25,20 +25,7 @@ class Dataform extends Component {
         console.log(idtoken);
     }
 
-
-
-handleSelect(date) {
-    this.setState({
-        startDate: date
-    });
-}
-
-    handleChange(date) {
-        this.setState({
-            startDate:date
-        });
-    }
-   
+    onChange = date => this.setState({ date })
 
 
     handleInputChange = event => {
@@ -73,8 +60,11 @@ handleSelect(date) {
 
 
     render() {
+
+        const { date } = this.state;
+
         return(
-            
+           <div>
             <Container fluid>
                 <row>
                     <Jumbotron>
@@ -88,7 +78,7 @@ handleSelect(date) {
                         <select
                             value={this.state.activity}
                             onChange={this.handleInputChange}
-                            //name="activity"
+                            name="activity"
                             >
                             <option value="Walking">Walking</option>
                             <option value="Lifting">Lifting</option>
@@ -105,7 +95,7 @@ handleSelect(date) {
                     <label>
                         Time Spent Active? (reqired)
                         <select
-                            //name="time"
+                            name="time"
                             value={this.state.time}
                             onChange={this.handleInputChange}>
 
@@ -119,24 +109,28 @@ handleSelect(date) {
                     </label>
                     </row>
                     <row>
-                    <label>
+                   
+                   {/* <label>
                         Select Date                       
+                  
+                   <div>
                         <DatePicker 
-                            //name="date"
-                            onSelect={this.state.handleSelect}
-                            onChange={this.handleChange}
-                            withPortal
-                            
+                            onChange={this.onChange}
+                            value={date}
                         />
-                        
+                    </div>
+                      {/* <label>
+                        Select Date                       
+                    
                     </label> 
+                     */}  
                     </row>
                     <row>
                     <label>
                         Notes:
 
                         <textarea
-                            //name="notes"
+                           name="notes"
                             value={this.state.notes}
                             onChange={this.handleInputChange}
                          />
@@ -155,6 +149,7 @@ handleSelect(date) {
                     </row>
                 </form>            
             </Container>
+        </div>     
         )
     }
 }
