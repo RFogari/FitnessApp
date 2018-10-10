@@ -7,8 +7,8 @@ import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
 import Dataform from './Pages/FitnessForm/Fitnessform';
-import Data from "./Pages/Data/DataDisplay";
-import Detail from "./Pages/Detail/DetailDisply";
+import Data from "./Pages/Data/datadisplay";
+import Detail from "./Pages/Detail/detaildisplay";
 
 
 const auth = new Auth();
