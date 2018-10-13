@@ -1,6 +1,7 @@
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
 import history from '../history';
+import { access } from 'fs';
 require('dotenv').config();
 
 export default class Auth {
@@ -21,6 +22,7 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    
   }
 
   login() {
@@ -45,9 +47,14 @@ export default class Auth {
     let expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
     );
+
+
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    
+    
+    
     // navigate to the home route
     history.replace('/home');
   }
@@ -65,9 +72,21 @@ export default class Auth {
     this.auth0.client.userInfo(accessToken, (err, profile) => {
       if (profile) {
         this.userProfile = profile;
+        //localStorage.setItem('user', profile.sub);
       }
       cb(err, profile);
     });
+  }
+
+  getUserSub(cb) {
+    let accessToken = this.getAccessToken();
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        this.userSub = profile.sub;
+        localStorage.setItem('user', profile.sub);
+      }
+      cb(err, profile)
+    })
   }
 
   logout() {

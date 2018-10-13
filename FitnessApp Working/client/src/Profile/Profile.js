@@ -12,6 +12,7 @@ class Profile extends Component {
       });
     } else {
       this.setState({ profile: userProfile });
+      console.log({userProfile});
     }
   }
   render() {
@@ -27,6 +28,7 @@ class Profile extends Component {
               <h3>{profile.nickname}</h3>
             </div>
             <pre>{JSON.stringify(profile, null, 2)}</pre>
+            <div>{profile.sub}</div>
           </Panel>
         </div>
       </div>

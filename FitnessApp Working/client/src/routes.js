@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, Router } from 'react-router-dom';
+import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import App from './App';
 import Home from './Home/Home';
 import Profile from './Profile/Profile';
@@ -8,7 +8,7 @@ import Auth from './Auth/Auth';
 import history from './history';
 import Dataform from './Pages/FitnessForm/Fitnessform';
 import Data from "./Pages/Data/datadisplay";
-import Detail from "./Pages/Detail/detaildisplay";
+
 
 
 const auth = new Auth();
@@ -26,13 +26,18 @@ export const makeMainRoutes = () => {
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/FitnessForm" render={(props) => <Dataform auth={auth} {...props} />} />
-          <Route exact path="/data" component={Data} />
-          <Route exact path="/data/:id" component={Detail} />
+          <Route path="/Data" render={(props) => <Data auth={auth} {...props} />} />
+          <Switch>
+              
+              
+              
+          </Switch>
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
               <Redirect to="/home"/>
             ) : (
               <Profile auth={auth} {...props} />
+              
             )
           )} />
           <Route path="/callback" render={(props) => {

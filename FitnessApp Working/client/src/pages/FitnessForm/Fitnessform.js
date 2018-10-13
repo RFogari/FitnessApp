@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import API from "../../Utils/API";
 //import { Link } from "react-router-dom";
 //import DatePicker from 'react-datepicker';
-import DatePicker from 'react-date-picker';
+//import DatePicker from 'react-date-picker';
 //import 'react-datepicker/dist/react-datepicker.css';
 import Jumbotron from "../../Components/Jumbotron";
 import Container from "../../Components/Container";
 //import moment from 'moment';
+
+
+
 
 
 class Dataform extends Component {
@@ -16,14 +19,30 @@ class Dataform extends Component {
         time: "",
         date: new Date(),
         notes: "",
-
+        //profile: "",
+        
     }
+    
    
 
+
     componentDidMount() {
-        const idtoken = localStorage.getItem('id_token')
-        console.log(idtoken);
-    }
+        //this.setState({ profile: {} });
+        const { userProfile, getProfile } = this.props.auth;
+        if (!userProfile) {
+          getProfile((err, profile) => {
+            this.setState({ profile });
+          });
+        } else {
+          this.setState({ profile: userProfile });
+          console.log(userProfile.sub);
+          localStorage.setItem("user", userProfile.sub);
+        }
+      }
+      
+
+
+
 
     onChange = date => this.setState({ date })
 
@@ -42,7 +61,8 @@ class Dataform extends Component {
                 && this.state.time 
                 &&this.state.date) {
                     API.saveData({
-                        tokenID: this.state.tokenID,
+                        
+                        tokenID: localStorage.getItem('user'),
                         activity: this.state.activity,
                         time: this.state.time,
                         date: this.state.date,
@@ -50,10 +70,7 @@ class Dataform extends Component {
 
                         
                     })
-                        .then(alert("form submitted"))
-                      
-
-                //.then(res => this.loadData())
+                                             
                 .then(err => console.log(err));
             }
     };

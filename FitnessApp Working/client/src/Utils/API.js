@@ -2,13 +2,15 @@ import axios from "axios";
 
 export default {
 
-    getData: function() {
-        return axios.get("/api/data");
+    getData: function(id) {
+        console.log("Get Data Working");
+        return axios.get("/api/records");
     },
 
     
 
-    saveData: function(formData) {
-        return axios.post("/api/data", formData);
+    saveData: function(data) {
+        console.log("Save Data Working");
+        return axios.post("/api/records", data);
     }
 };

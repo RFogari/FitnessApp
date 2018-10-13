@@ -3,12 +3,36 @@ import { Link } from 'react-router-dom';
 
 
 
+
 class Home extends Component {
   login() {
     this.props.auth.login();
+
+    
   }
+
+  componentDidMount() {
+    this.setState({ profile: {} });
+    const { userProfile, getProfile } = this.props.auth;
+    if (!userProfile) {
+      getProfile((err, profile) => {
+        this.setState({ profile });
+      });
+    } else {
+      this.setState({ profile: userProfile });
+      console.log(userProfile);
+      console.log(userProfile.sub);
+      localStorage.setItem("user", userProfile.sub);
+      //alert(userProfile.sub);
+    }
+  }
+
+
   render() {
     const { isAuthenticated } = this.props.auth;
+
+      
+
     return (
       <div className="container">
         {
@@ -20,10 +44,13 @@ class Home extends Component {
                 You are logged in! You can now view your{' '}
                 <Link to="profile">profile area</Link>
                 .
-              </h4>
+              </h4>,
 
+                  
               
+
               <h1> to add new records click the following link <Link to="FitnessForm">Form</Link></h1>
+              <h1> to view new records click the following link <Link to="Data">Form</Link></h1>
               </div>
             )
         }

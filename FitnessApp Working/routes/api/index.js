@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const fitnessdataroutes = require("./fitnessdata");
+const recordRoutes = require("./records");
 
 //fitnessdata routes
-router.use("/fitnessdata", fitnessdataroutes);
+router.use("/records", recordRoutes);
 
 module.exports = router;
