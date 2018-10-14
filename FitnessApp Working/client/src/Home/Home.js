@@ -39,18 +39,16 @@ class Home extends Component {
           isAuthenticated() && (
               
             <div>
-              
-              <h4>
-                You are logged in! You can now view your{' '}
-                <Link to="profile">profile area</Link>
-                .
-              </h4>,
+              <h1>Welcome To Fitness App</h1>
 
+              <h2> To Enter New Records Please click the following</h2>
+              <h2>To View Your Records, Please Click the Following</h2>           
                   
               
 
               <h1> to add new records click the following link <Link to="FitnessForm">Form</Link></h1>
               <h1> to view new records click the following link <Link to="Data">Form</Link></h1>
+              <h1> to view new records click the following link <Link to="Dataform2">Form</Link></h1>
               </div>
             )
         }

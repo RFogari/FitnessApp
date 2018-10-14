@@ -12,7 +12,7 @@ import Container from "../../Components/Container";
 
 
 
-class Dataform extends Component {
+class Fitnessform extends Component {
 
     state = {
         activity: "",
@@ -20,10 +20,10 @@ class Dataform extends Component {
         date: new Date(),
         notes: "",
         //profile: "",
-        
+
     }
-    
-   
+
+
 
 
     componentDidMount() {
@@ -39,7 +39,7 @@ class Dataform extends Component {
           localStorage.setItem("user", userProfile.sub);
         }
       }
-      
+
 
 
 
@@ -57,20 +57,20 @@ class Dataform extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.activity 
-                && this.state.time 
+        if (this.state.activity
+                && this.state.time
                 &&this.state.date) {
                     API.saveData({
-                        
+
                         tokenID: localStorage.getItem('user'),
                         activity: this.state.activity,
                         time: this.state.time,
                         date: this.state.date,
                         notes: this.state.notes,
 
-                        
+
                     })
-                                             
+
                 .then(err => console.log(err));
             }
     };
@@ -104,7 +104,7 @@ class Dataform extends Component {
                             <option value="Running">Running</option>
                             <option value="Cycling">Cycling</option>
                             <option value="Rowing">Rowing</option>
-                            
+
                         </select>
                     </label>
                     </row>
@@ -121,26 +121,23 @@ class Dataform extends Component {
                         <option value="45">45 Minutes</option>
                         <option value="60">1 Hour</option>
                         <option value="90">90 Minutes</option>
-                        <option value="120">2 Hours</option>    
-                        </select> 
+                        <option value="120">2 Hours</option>
+                        </select>
                     </label>
                     </row>
                     <row>
-                   
-                   {/* <label>
-                        Select Date                       
-                  
-                   <div>
-                        <DatePicker 
-                            onChange={this.onChange}
-                            value={date}
-                        />
-                    </div>
-                      {/* <label>
-                        Select Date                       
-                    
-                    </label> 
-                     */}  
+                        <label>
+                            Activity Date
+
+                        </label>
+                        <input
+                            type="date"
+                            name="date"
+                            value={this.state.date}
+                            onChange={this.handleInputChange}>
+                        </input>
+
+
                     </row>
                     <row>
                     <label>
@@ -151,8 +148,8 @@ class Dataform extends Component {
                             value={this.state.notes}
                             onChange={this.handleInputChange}
                          />
-                        
-                    </label>           
+
+                    </label>
                     </row>
                     <row>
                     <button
@@ -164,11 +161,11 @@ class Dataform extends Component {
                         onClick={this.handleFormSubmit}
                         >Submit New Data</button>
                     </row>
-                </form>            
+                </form>
             </Container>
-        </div>     
+        </div>
         )
     }
 }
 
-export default Dataform;
+export default Fitnessform;

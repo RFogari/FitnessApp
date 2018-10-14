@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../../Utils/API";
 import { Link } from "react-router-dom";
 import { ListItem, List } from "../../Components/List";
+//import { Table } from "react-bootstrap";
 
 class Records extends Component {
 
@@ -53,9 +54,12 @@ class Records extends Component {
 
     render() {
 
+        
         //const tokenid = localStorage.getItem('id_token');
 
         return(
+
+
             <container>
 
                 <div>
@@ -63,20 +67,29 @@ class Records extends Component {
                     <h1>Fitness Records</h1>
                     </jumbotron>
                     {this.state.records.length ? (
-                    <List>
+                   
+                   <List>
+                     
                         {this.state.records.map(record => (
                             <ListItem key={record.__id}>
                             <Link to={"/records/" + record.tokenID}>
-                                <strong>
-                                    {record.date}
-                                    {record.activity}
+                                <div>
+                                    <p>Date:</p>
+                                    <ul>{record.date}</ul>
                                     
-                                    
-                                </strong>
-                            
+                                    <p>Time Spent:</p>
+                                    <ul>{record.time}</ul>
+                                    <p>Workout:</p>
+                                    <ul>{record.activity}</ul>
+                                </div>
+                                
                             </Link>
+                            
+                            
                             </ListItem>
+                                
                         ))}
+                   
                     </List>
                     )
                         

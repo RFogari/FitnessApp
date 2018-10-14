@@ -1,7 +1,10 @@
 import React from "react";
 
 export const ListItem = props => (
-    <li className="list-group-item">
-    {props.children}
-    </li>
+    <row className="show-grid">
+    <tr>
+    
+    <td className="list-group-item">{props.children}</td>
+    </tr>
+  </row>
 )

@@ -23,7 +23,7 @@ class App extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Auth0 - React</a>
+              <a href="/">Fitness App</a>
             </Navbar.Brand>
             <Button
               bsStyle="primary"
@@ -41,37 +41,81 @@ class App extends Component {
                     onClick={this.login.bind(this)}
                   >
                     Log In
-                  </Button>
+                  </Button>,
+                  <Button
+                    id="aboutMe"
+                    bsStyle="primary"
+                    classname="btn-margin"
+                    onClick={this.goTo.bind(this, 'AboutMe')}
+                    >About Me</Button>
+
+
                 )
             }
             {
               isAuthenticated() && (
+                  [
                   <Button
                     bsStyle="primary"
                     className="btn-margin"
                     onClick={this.goTo.bind(this, 'profile')}
                   >
                     Profile
-                  </Button>
+                  </Button>,
                   
+                  <Button
+                  id="fitnessForm"
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.goTo.bind(this, 'Fitnessform')}>
+                  Enter New Records</Button>,
+
+                  <Button
+                  id="Data"
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.goTo.bind(this, 'Data')}>
+                  
+                  View Records</Button>,
+
+                  <Button
+                  id="qsLogoutBtn"
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.logout.bind(this)}
+                  >
+                  Log Out
+                  </Button>
+                  ]
                 )
             }
             {
               isAuthenticated() && (
-                  <Button
+                  /*<Button
                     id="qsLogoutBtn"
                     bsStyle="primary"
                     className="btn-margin"
                     onClick={this.logout.bind(this)}
                   >
                     Log Out
-                  </Button>
+                  </Button>,
+
+                <Button
+                id="fitnessForm"
+                bsStyle="primary"
+                classname="btn-margin"
+                onClick={this.goTo.bind(this, 'Fitnessform')}>
+                Enter New Records</Button>
+                */
+                  <div></div>
+
                 )
             }
           </Navbar.Header>
         </Navbar>
         <div className="container">
           {this.props.children}
+          
         </div>
       </div>
     );
