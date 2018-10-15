@@ -34,6 +34,7 @@ class App extends Component {
             </Button>
             {
               !isAuthenticated() && (
+                [
                   <Button
                     id="qsLoginBtn"
                     bsStyle="primary"
@@ -48,7 +49,7 @@ class App extends Component {
                     classname="btn-margin"
                     onClick={this.goTo.bind(this, 'AboutMe')}
                     >About Me</Button>
-
+                ]
 
                 )
             }
@@ -76,38 +77,20 @@ class App extends Component {
                   className="btn-margin"
                   onClick={this.goTo.bind(this, 'Data')}>
                   
-                  View Records</Button>,
-
-                  <Button
-                  id="qsLogoutBtn"
-                  bsStyle="primary"
-                  className="btn-margin"
-                  onClick={this.logout.bind(this)}
-                  >
-                  Log Out
-                  </Button>
+                  View Records</Button>
                   ]
                 )
             }
             {
               isAuthenticated() && (
-                  /*<Button
+                  <Button
                     id="qsLogoutBtn"
                     bsStyle="primary"
                     className="btn-margin"
                     onClick={this.logout.bind(this)}
                   >
                     Log Out
-                  </Button>,
-
-                <Button
-                id="fitnessForm"
-                bsStyle="primary"
-                classname="btn-margin"
-                onClick={this.goTo.bind(this, 'Fitnessform')}>
-                Enter New Records</Button>
-                */
-                  <div></div>
+                  </Button>
 
                 )
             }
