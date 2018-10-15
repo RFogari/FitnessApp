@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import API from "../../Utils/API";
-//import { Link } from "react-router-dom";
-//import DatePicker from 'react-datepicker';
-//import DatePicker from 'react-date-picker';
-//import 'react-datepicker/dist/react-datepicker.css';
+import {Form, FormControl, FormGroup, ControlLabel, Button} from 'react-bootstrap';
+
 import Jumbotron from "../../Components/Jumbotron";
 import Container from "../../Components/Container";
-//import moment from 'moment';
-
-
 
 
 
@@ -17,13 +12,11 @@ class Fitnessform extends Component {
     state = {
         activity: "",
         time: "",
-        date: new Date(),
+        date: '',
         notes: "",
         //profile: "",
 
     }
-
-
 
 
     componentDidMount() {
@@ -39,7 +32,6 @@ class Fitnessform extends Component {
           localStorage.setItem("user", userProfile.sub);
         }
       }
-
 
 
 
@@ -78,24 +70,28 @@ class Fitnessform extends Component {
 
     render() {
 
-        const { date } = this.state;
+        
 
         return(
            <div>
-            <Container fluid>
+            <Container>
                 <row>
                     <Jumbotron>
                         <h1>Enter New Fitness Records</h1>
                     </Jumbotron>
                 </row>
-                <form onSubmit={this.handleFormSubmit}>
+                <Form onSubmit={this.handleFormSubmit}>
+                <FormGroup>
                     <row>
-                    <label>
-                        Select Your Activity:
-                        <select
+                    
+                    <ControlLabel>
+                        Select Your Workout
+                        </ControlLabel>
+                        <FormControl
                             value={this.state.activity}
                             onChange={this.handleInputChange}
                             name="activity"
+                            componentClass="select"
                             >
                             <option value="Walking">Walking</option>
                             <option value="Lifting">Lifting</option>
@@ -105,16 +101,18 @@ class Fitnessform extends Component {
                             <option value="Cycling">Cycling</option>
                             <option value="Rowing">Rowing</option>
 
-                        </select>
-                    </label>
+                        </FormControl>
+                    
                     </row>
                     <row>
-                    <label>
-                        Time Spent Active? (reqired)
-                        <select
+                    <ControlLabel>
+                        Select Workout Duration
+                        </ControlLabel>
+                        <FormControl
                             name="time"
                             value={this.state.time}
-                            onChange={this.handleInputChange}>
+                            onChange={this.handleInputChange}
+                            componentClass="select">
 
                         <option value="15">15 Minutes</option>
                         <option value="30">30 Minutes</option>
@@ -122,46 +120,64 @@ class Fitnessform extends Component {
                         <option value="60">1 Hour</option>
                         <option value="90">90 Minutes</option>
                         <option value="120">2 Hours</option>
-                        </select>
-                    </label>
+                        </FormControl>
+                    
                     </row>
                     <row>
-                        <label>
-                            Activity Date
+                        <ControlLabel>
+                            Enter Workout Date
 
-                        </label>
-                        <input
-                            type="date"
+                        </ControlLabel>
+                        <FormControl
+                      
+                            type="text"
                             name="date"
+                            placeholder="MM/DD/YYYY"
                             value={this.state.date}
-                            onChange={this.handleInputChange}>
-                        </input>
+                            onChange={this.handleInputChange}
+                            >
+                            
+                      
+                        </FormControl>
 
 
                     </row>
                     <row>
-                    <label>
-                        Notes:
+                    <ControlLabel>
+                        Select How You Currently Feel
+                    </ControlLabel>  
 
-                        <textarea
-                           name="notes"
+                      <FormControl
+                            name="notes"
                             value={this.state.notes}
                             onChange={this.handleInputChange}
-                         />
+                            componentClass="select">
 
-                    </label>
+                        <option value="Great">Great</option>
+                        <option value="Good">Good</option>
+                        <option value="Okay">Okay</option>
+                        <option value="Not So Good">Not So Good</option>
+                        <option value="Awful">Awful</option>
+                        <option value="My Legs Are Broken">My Legs Are Broken</option>
+                        </FormControl>
+
+                    
                     </row>
+                     
                     <row>
-                    <button
-                        disabled={!(
-                            this.state.activity
-                            && this.state.time
-                            && this.state.date
-                        )}
-                        onClick={this.handleFormSubmit}
-                        >Submit New Data</button>
+                    
+                        <Button bsStyle="success"
+                            disabled={!(
+                                this.state.activity
+                                && this.state.time
+                                && this.state.date
+                            )}
+                            onClick={this.handleFormSubmit}
+                            >Submit A New Record New Data</Button>
+                     
                     </row>
-                </form>
+                  </FormGroup> 
+                </Form>
             </Container>
         </div>
         )

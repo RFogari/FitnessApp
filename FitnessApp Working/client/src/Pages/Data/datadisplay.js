@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import API from "../../Utils/API";
-import { Link } from "react-router-dom";
-import { ListItem, List } from "../../Components/List";
-//import { Table } from "react-bootstrap";
+
+import {ListGroupItem, ListGroup} from 'react-bootstrap';
+
 
 class Records extends Component {
 
@@ -66,31 +66,40 @@ class Records extends Component {
                     <jumbotron>
                     <h1>Fitness Records</h1>
                     </jumbotron>
+
+                    <div className="dataDisplayContainer">
                     {this.state.records.length ? (
                    
-                   <List>
+                   <div>
                      
                         {this.state.records.map(record => (
-                            <ListItem key={record.__id}>
-                            <Link to={"/records/" + record.tokenID}>
-                                <div>
-                                    <p>Date:</p>
-                                    <ul>{record.date}</ul>
-                                    
-                                    <p>Time Spent:</p>
-                                    <ul>{record.time}</ul>
-                                    <p>Workout:</p>
-                                    <ul>{record.activity}</ul>
-                                </div>
+                            <ListGroupItem key={record.__id}>
+                                <ListGroup>
+                                    <ListGroupItem header="Date">
+                                    {record.date}
+                                    </ListGroupItem>
+                                    <ListGroupItem header="Workout">
+                                        {record.activity}
+                                    </ListGroupItem>
+
+                                    <ListGroupItem header="Workout Duration">
+                                        {record.time}
+                                    </ListGroupItem>
+
+                                    <ListGroupItem header="Notes">
+                                        {record.notes}
+                                    </ListGroupItem>
+                                    </ListGroup>
+                                                           
                                 
-                            </Link>
                             
                             
-                            </ListItem>
+                            
+                            </ListGroupItem>
                                 
                         ))}
                    
-                    </List>
+                    </div>
                     )
                         
                     
@@ -98,6 +107,14 @@ class Records extends Component {
                     <h3>No Results to Display</h3>
                     )}
                 </div>
+
+                <div>
+                    
+               
+                    
+                </div>
+                </div>
+
             </container>
         )    
     }
