@@ -114,12 +114,12 @@ class Fitnessform extends Component {
                             onChange={this.handleInputChange}
                             componentClass="select">
 
-                        <option value="15">15 Minutes</option>
-                        <option value="30">30 Minutes</option>
-                        <option value="45">45 Minutes</option>
-                        <option value="60">1 Hour</option>
-                        <option value="90">90 Minutes</option>
-                        <option value="120">2 Hours</option>
+                        <option value="15 Minutes">15 Minutes</option>
+                        <option value="30 Minutes">30 Minutes</option>
+                        <option value="45 Minutes">45 Minutes</option>
+                        <option value="1 Hour">1 Hour</option>
+                        <option value="90 Minutes">90 Minutes</option>
+                        <option value="2 Hours">2 Hours</option>
                         </FormControl>
                     
                     </row>
