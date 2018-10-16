@@ -1,0 +1,20 @@
+{
+  "name": "fitnessapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.2",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "react-bootstrap": "^0.32.4",
+    "react-datepicker": "^1.6.0"
+  }
+}
