@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //express static will server public folder
-app.use(express.static("client/build"));
+app.use(express.static("client/public"));
 
 //Routes for both API and view
 app.use(routes);
