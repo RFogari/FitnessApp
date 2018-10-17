@@ -9,6 +9,8 @@ import history from './history';
 import Fitnessform from './Pages/FitnessForm/Fitnessform';
 import Data from "./Pages/Data/datadisplay";
 import AboutMe from "./Pages/AboutMe/aboutme";
+import About from "./Pages/About/About";
+import Jumbotronhome from "./Home/Jumbotron-home";
 
 
 
@@ -29,7 +31,8 @@ export const makeMainRoutes = () => {
           <Route path="/FitnessForm" render={(props) => <Fitnessform auth={auth} {...props} />} />
           <Route path="/Data" render={(props) => <Data auth={auth} {...props} />} />
           <Route path="/AboutMe" render={(props) => <AboutMe {...props} />} />
-
+          <Route path="/About" render={(props) => <About {...props} />} />
+          
           <Switch>
 
 
@@ -37,7 +40,7 @@ export const makeMainRoutes = () => {
           </Switch>
           <Route path="/profile" render={(props) => (
             !auth.isAuthenticated() ? (
-              <Redirect to="/home"/>
+              <Redirect to="/"/>
             ) : (
               <Profile auth={auth} {...props} />
 

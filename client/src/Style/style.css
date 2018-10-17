@@ -1,0 +1,98 @@
+html {
+    height: 100%;
+}
+
+
+
+body {
+    background-image: linear-gradient(to bottom right, rgb(160, 55, 186), teal); 
+    height: auto;
+}
+
+
+.index {
+    position: relative;
+
+    width: 80vw;
+    
+
+}
+
+.about {
+
+    width: 80vw;
+    height: 200px;
+    position: relative;
+    top: 13px;
+}
+
+
+
+#about-text {
+    position: relative;
+    margin: auto;
+    width: 80vw;
+}
+
+.contact {
+
+    width: 80vw;
+    height: 200px;
+    position: relative;
+    top: 103px;
+}
+
+#contact-text {
+    position: relative;
+    margin: auto 0;
+    top: 90px;
+    width: 80vw;
+}
+
+#lorem{
+    width: 80vw;
+
+
+}
+
+#robtext1 {
+    position: relative;
+    top: 100px;
+    display: none;
+}
+
+
+
+#foot3 {
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.py-3 {
+     position: absolute;
+     left: 200px;
+}
+
+#chart {
+    width: 400px;
+}
+
+.recharts-cartesian-axis-tick {
+    font-size: 15px;
+}
+
+.recharts-legend-item-text {
+    font-size: 20px;
+}
+
+.panel-default {
+
+    position: relative;
+    top: 115px;
+    margin-bottom: 150px;
+}
+
+

@@ -44,12 +44,13 @@ class App extends Component {
                     Log In
                   </Button>,
                   <Button
-                    id="aboutMe"
+                    id="About"
                     bsStyle="primary"
                     classname="btn-margin"
-                    onClick={this.goTo.bind(this, 'AboutMe')}
+                    onClick={this.goTo.bind(this, 'About')}
                     >About Me</Button>
                 ]
+                
 
                 )
             }

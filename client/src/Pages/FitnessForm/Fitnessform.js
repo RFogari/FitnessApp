@@ -76,12 +76,12 @@ class Fitnessform extends Component {
            <div>
             <Container>
                 <row>
-                    <Jumbotron>
-                        <h1>Enter New Fitness Records</h1>
+                    <Jumbotron id="formHeader">
+                        <h1 id="formHeader">Enter New Fitness Records</h1>
                     </Jumbotron>
                 </row>
                 <Form onSubmit={this.handleFormSubmit}>
-                <FormGroup>
+                <FormGroup className="fitnessform">
                     <row>
                     
                     <ControlLabel>
@@ -166,7 +166,7 @@ class Fitnessform extends Component {
                      
                     <row>
                     
-                        <Button bsStyle="success"
+                        <Button bsStyle="success" id="formButton"
                             disabled={!(
                                 this.state.activity
                                 && this.state.time

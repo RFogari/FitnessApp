@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../Utils/API";
 
-import {ListGroupItem, ListGroup} from 'react-bootstrap';
+import {ListGroupItem, ListGroup, Jumbotron} from 'react-bootstrap';
 
 
 class Records extends Component {
@@ -63,18 +63,19 @@ class Records extends Component {
             <container>
 
                 <div>
-                    <jumbotron>
+                    <Jumbotron className="dataDisplay">
                     <h1>Fitness Records</h1>
-                    </jumbotron>
+                    </Jumbotron>
 
                     <div className="dataDisplayContainer">
                     {this.state.records.length ? (
                    
-                   <div>
+                   <div className="dataRecord">
                      
                         {this.state.records.map(record => (
-                            <ListGroupItem key={record.__id}>
-                                <ListGroup>
+                            <ListGroupItem id="itemRecord" key={record.__id}>
+                                <ListGroup >
+
                                     <ListGroupItem header="Date">
                                     {record.date}
                                     </ListGroupItem>
