@@ -2,6 +2,10 @@
   "name": "fitnessapp",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "npm": "^5.6.x",
+    "node": "^8.9.4"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
