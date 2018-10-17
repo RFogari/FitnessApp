@@ -64,7 +64,7 @@ class Records extends Component {
 
                 <div>
                     <Jumbotron className="dataDisplay">
-                    <h1>Fitness Records</h1>
+                    <h1>Fitness Activity</h1>
                     </Jumbotron>
 
                     <div className="dataDisplayContainer">

@@ -23,7 +23,7 @@ class App extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">Fitness App</a>
+              <a href="/home">Fitness App</a>
             </Navbar.Brand>
             <Button
               bsStyle="primary"
@@ -44,11 +44,19 @@ class App extends Component {
                     Log In
                   </Button>,
                   <Button
-                    id="About"
+                    id="buttonID"
                     bsStyle="primary"
                     classname="btn-margin"
                     onClick={this.goTo.bind(this, 'About')}
-                    >About Me</Button>
+                    >About</Button>,
+
+                    <Button
+                    id="buttonID"
+                    bsStyle="primary"
+                    classname="btn-margin"
+                    onClick={this.goTo.bind(this, 'Contact')}
+                    >Contact
+                    </Button>
                 ]
                 
 
@@ -78,7 +86,7 @@ class App extends Component {
                   className="btn-margin"
                   onClick={this.goTo.bind(this, 'Data')}>
                   
-                  View Records</Button>
+                  Track Activity</Button>
                   ]
                 )
             }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import JumbotronLogin from "../Pages/Login/Jumbotron-login";
+import JumbotronHome from "./Jumbotron-home";
 
 
 
@@ -46,16 +46,9 @@ class Home extends Component {
         }
         {
           !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
-              </h4>
+             <div>
+               <JumbotronHome />
+               </div>
             )
         }
       </div>

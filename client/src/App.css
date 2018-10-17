@@ -1,3 +1,7 @@
 .btn-margin {
-  margin: 7px 3px;
+  margin: 7px 7px;
+  
+}
+#buttonID {
+  margin-left:10px;
 }
