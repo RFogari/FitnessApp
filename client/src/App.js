@@ -86,7 +86,15 @@ class App extends Component {
                   className="btn-margin"
                   onClick={this.goTo.bind(this, 'Data')}>
                   
-                  Track Activity</Button>
+                  Track Activity</Button>,
+
+                  <Button
+                  id="Data"
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.goTo.bind(this, 'Chart')}>
+
+                  Chart</Button>
                   ]
                 )
             }

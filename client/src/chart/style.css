@@ -1,0 +1,45 @@
+html {
+    height: 100%;
+}
+
+
+
+body {
+    background-image: linear-gradient(to bottom right, rgb(160, 55, 186), teal); 
+    height: auto;
+}
+
+
+.index {
+    position: relative;
+
+    width: 80vw;
+    
+
+}
+
+
+#chart {
+    width: 400px;
+}
+
+.recharts-cartesian-axis-tick {
+    font-size: 15px;
+}
+
+.recharts-legend-item-text {
+    font-size: 20px;
+}
+
+#lineChart {
+    margin: auto;
+}
+
+.panel-default {
+
+    position: relative;
+    top: 115px;
+    margin-bottom: 150px;
+}
+
+
