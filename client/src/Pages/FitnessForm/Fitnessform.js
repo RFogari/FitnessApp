@@ -14,8 +14,6 @@ class Fitnessform extends Component {
         time: "",
         date: '',
         notes: "",
-        //profile: "",
-
     }
 
 
@@ -59,8 +57,6 @@ class Fitnessform extends Component {
                         time: this.state.time,
                         date: this.state.date,
                         notes: this.state.notes,
-
-
                     })
 
                 .then(err => console.log(err));

@@ -29,9 +29,8 @@ const FitnessSchema = new Schema({
     notes: {
         type: String,
         required: false,
-    }
-
-
+    },
+   
 });
 
 //Create model from Schema using mongoose's model method.
